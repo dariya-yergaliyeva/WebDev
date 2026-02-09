@@ -1,0 +1,126 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+
+.novbar {
+    background-color: #212121;
+    color: #8e8e8e;
+    padding: 12px 60px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 32px;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+input[type="text"] {
+    width: 450px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #555;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]::placeholder {
+    color: #bbb;
+}
+
+input[type="text"]:focus {
+    border-color: #66afe9;
+}
+
+button#addBtn {
+    background-color: #337ab7;
+    color: white;
+    border: 1px solid #2e6da4;
+    padding: 6px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button#addBtn:hover {
+    background-color: #286090;
+}
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+/* Чекбокс */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+.todo-text {
+    flex-grow: 1;
+    margin-left: 30px;
+    font-size: 16px;
+    color: #555;
+}
+
+.completed .todo-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 18px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: 0 10px;
+}
+
+.delete-btn:hover {
+    opacity: 1;
+}
