@@ -43,18 +43,6 @@
     </div>
   </div>
 
-  <!-- ── CATEGORY NAV ── -->
-  <nav class="cat-nav">
-    <div class="cat-nav-inner">
-      <button
-        *ngFor="let cat of categories"
-        class="cat-nav-btn"
-        [class.active]="activeCategory === cat.key"
-        (click)="setCategory(cat.key)"
-      >{{ cat.label }}</button>
-    </div>
-  </nav>
-
   <!-- ── MAIN CONTENT ── -->
   <div class="main-content">
 
@@ -67,13 +55,12 @@
         </div>
         <ul class="sidebar-list">
           <li
-            *ngFor="let cat of sidebarCategories"
+            *ngFor="let cat of categories"
             class="sidebar-item"
-            [class.active]="activeCategory === cat.key"
-            (click)="setCategory(cat.key)"
+            [class.active]="activeCategory === cat.id"
+            (click)="setCategory(cat.id)"
           >
-            {{ cat.label }}
-            <span class="sidebar-item-count">({{ cat.count }})</span>
+            {{ cat.name }}
           </li>
         </ul>
       </div>
@@ -90,21 +77,21 @@
         </div>
       </div>
 
-      <!-- Rating Filter -->
+    
       <div class="sidebar-section">
         <div class="sidebar-title-row">
           <span class="sidebar-title">Rating</span>
         </div>
         <div class="rating-filters">
           <label *ngFor="let r of [5,4,3]" class="rating-filter-item">
-            <input type="radio" name="rating" [value]="r" [(ngModel)]="minRating" />
+            <input type="radio" name="rating" [value]="r" [(ngModel)]="minRating" (change)="filterProducts()" />
             <span class="mini-stars">
               <span *ngFor="let s of [1,2,3,4,5]" [class.on]="s <= r">★</span>
             </span>
             <span class="rating-filter-text">и выше</span>
           </label>
           <label class="rating-filter-item">
-            <input type="radio" name="rating" [value]="0" [(ngModel)]="minRating" />
+            <input type="radio" name="rating" [value]="0" [(ngModel)]="minRating" (change)="filterProducts()" />
             <span class="rating-filter-text">All</span>
           </label>
         </div>
@@ -122,10 +109,10 @@
           <span class="bc-current">{{ activeCategoryLabel }}</span>
         </div>
         <div class="sort-row">
-          <select [(ngModel)]="sortBy" class="sort-select">
+          <select [(ngModel)]="sortBy" (ngModelChange)="filterProducts()" class="sort-select">
             <option value="default">Popular</option>
-            <option value="price-asc">Price: asceding order</option>
-            <option value="price-desc">Цена: desceding order</option>
+            <option value="price-asc">Цена: по возростанию</option>
+            <option value="price-desc">Цена: по убыванию</option>
             <option value="rating">По рейтингу</option>
           </select>
         </div>
@@ -141,6 +128,7 @@
         <app-product-card
           *ngFor="let product of filteredProducts"
           [product]="product"
+          (productDeleted)="onProductDeleted($event)"
         ></app-product-card>
       </div>
 
