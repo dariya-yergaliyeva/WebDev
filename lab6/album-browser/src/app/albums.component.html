@@ -1,0 +1,8 @@
+<h1>Albums</h1>
+<div class="products-container">
+  <div class="product-card" *ngFor="let album of albums">
+    <h2>{{ album.title }}</h2>
+    <button class="kaspi-button" (click)="viewAlbum(album.id)">View Details</button>
+    <button class="delete-btn" (click)="deleteAlbum(album.id)">Delete</button>
+  </div>
+</div>
