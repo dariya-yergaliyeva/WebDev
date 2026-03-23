@@ -85,6 +85,10 @@ export class ProductCardComponent {
   }
 
   confirmDelete(): void {
+    if (this.isLiked) {
+      alert('Лайкнутый товар нельзя удалить. Сначала уберите лайк.');
+      return;
+    }
     this.deleteConfirmation = true;
   }
 

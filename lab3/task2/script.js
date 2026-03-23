@@ -1,11 +1,22 @@
 const input = document.getElementById('todoInput');
 const addBtn = document.getElementById('addBtn');
 const todoList = document.getElementById('todoList');
+const statusString = document.getElementById('statusString');
+
+function updateStatusString() {
+    const items = todoList.querySelectorAll('li');
+    let done = 0, notDone = 0;
+    items.forEach(li => {
+        const checkbox = li.querySelector('input[type="checkbox"]');
+        if (checkbox && checkbox.checked) done++;
+        else notDone++;
+    });
+    statusString.textContent = `Выполнено: ${done}, Не выполнено: ${notDone}`;
+}
 
 function addTask() {
     const taskValue = input.value.trim();
-    
-    if (taskValue === "") return; 
+    if (taskValue === "") return;
     const li = document.createElement('li');
     li.className = 'todo-item';
 
@@ -13,6 +24,7 @@ function addTask() {
     checkbox.type = 'checkbox';
     checkbox.addEventListener('change', () => {
         li.classList.toggle('completed');
+        updateStatusString();
     });
 
     const span = document.createElement('span');
@@ -22,7 +34,10 @@ function addTask() {
     const delBtn = document.createElement('button');
     delBtn.innerHTML = '🗑';
     delBtn.className = 'delete-btn';
-    delBtn.onclick = () => todoList.removeChild(li);
+    delBtn.onclick = () => {
+        todoList.removeChild(li);
+        updateStatusString();
+    };
 
     li.appendChild(checkbox);
     li.appendChild(span);
@@ -30,12 +45,16 @@ function addTask() {
     todoList.appendChild(li);
 
     input.value = "";
+    updateStatusString();
 }
 
-// Event Listeners
+
 addBtn.addEventListener('click', addTask);
 
-// Allow "Enter" key to add tasks
+
 input.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask();
 });
+
+
+updateStatusString();

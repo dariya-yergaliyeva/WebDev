@@ -7,7 +7,7 @@ class Animal:
     def speak(self) -> str:
         return "..."
     def info(self) -> str:
-        return f"{self.name} is {self.age} years old and {self.color}."
+        return f"{self.name} is {self.age} years old and {self.color}"
     def celebrate_birthday(self) -> None:
         self.age += 1
     def __str__(self) -> str:
@@ -20,7 +20,7 @@ class Dog(Animal):
     def speak(self) -> str:
         return "gaf"
     def fetch(self, item: str) -> str:
-        return f"{self.name} fetched the {item}!"
+        return f"{self.name} fetched the {item}"
     def __str__(self) -> str:
         return f"{super().__str__()}, breed={self.breed}"
     

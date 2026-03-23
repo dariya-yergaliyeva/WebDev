@@ -8,8 +8,8 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #fafafa;
-    
+    background-color: #ffffff;
+
     display: flex;
     flex-direction: column; 
 }
@@ -46,7 +46,19 @@ main {
     margin-left: -100px;
     align-items: flex-start;
 }
-
+.meta{
+    margin-top:16px;
+    text-align:center;
+    font-size:12px;
+    color:var(--muted);
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    user-select:none;
+    color:#848484;
+  }
 .tagline {
     font-size: 22px;
     color: #242323;
@@ -144,7 +156,7 @@ input {
     font-size: 16px;
     cursor: pointer;
     margin-bottom: 20px;
-    margin-top: 30px;
+    margin-top: 9px;
 }
 
 .facebook-btn:hover {
@@ -167,6 +179,22 @@ input {
 .create-account:hover {
     text-decoration: underline;
 }
+  .fb-dot{
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--facebook);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:12px;
+    font-weight:900;
+    font-family:ui-sans-serif,system-ui;
+    line-height:1;
+    background-color: #0078d4;
+    margin-right: 5px;
+  }
 
 .bottom-footer {
     width: 100%;
@@ -180,6 +208,7 @@ input {
 }
 .footer-nav { margin-bottom: 10px; }
 .footer-nav a { color: #8e8e8e; text-decoration: none; margin: 0 8px; }
+.footer-nav a:hover { color: #8e8e8e; text-decoration: underline; margin: 0 8px; }
 .or-container {
     display: flex;
     align-items: center;
