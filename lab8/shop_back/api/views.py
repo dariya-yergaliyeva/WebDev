@@ -16,5 +16,23 @@ class CategoryViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
     
 class ProductViewSet(viewsets.ModelViewSet):
-    queryset = Product.objects.all()
+    queryset = Product.objects.filter(is_active=True)
     serializer_class = ProductSerializer
+
+    @action(detail=True, methods=['get'])
+    def discount(self, request, pk=None):
+        product = self.get_object()
+        discounted_price = product.price * 0.9
+
+        data = {
+            'id': product.id,
+            'name': product.name,
+            'price': product.price,
+            'discounted_price': discounted_price,
+            'description': product.description,
+            'count': product.count,
+            'is_active': product.is_active,
+            'category': product.category.id
+        }
+
+        return Response(data)
